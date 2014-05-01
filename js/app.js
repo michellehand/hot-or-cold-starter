@@ -66,8 +66,10 @@ function validate(guessNum) {
 
 function feedback(guessNum) {
   var relativeNum = Math.abs(guessNum - secretNumber);
-  if (relativeNum === secretNumber) {
+  if (relativeNum === 0) {
     $("#feedback").text("You Guessed Correctly! Yay!");
+  } else if (relativeNum <= 5) {
+    $("#feedback").text("You are practically on FIRE!");
   } else if (relativeNum <= 10) {
     $("#feedback").text("HOT");
   } else if (relativeNum <= 25) {
