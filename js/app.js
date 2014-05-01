@@ -1,8 +1,3 @@
-/* Notes: got it to give feedback on the first guess, //
-but not from mulitple guess. button doesnt respond */
-
-
-
 $(document).ready(function(){
 
 	newGame();
@@ -26,9 +21,14 @@ $(document).ready(function(){
   /*guess button*/
   $('#guessButton').click(function() {
     event.preventDefault();
-    validate($('#userGuess').val());
+    if (guessCount > 5) {
+     $('#feedback').text('You guessed more than 5 times. You lose!');
+    } else {
+      validate($('#userGuess').val());
+      guessCount += 1;
+      $('#count').text(guessCount);
+    }
   });
-
 });
 
 
@@ -42,6 +42,8 @@ var guessCount = 0;
 function newGame() {
     $('#count').text('0');
     $('#feedback').text('Make your Guess!');
+    $('#userGuess').val('');
+    $('#guessList').find("li").remove();
     secretNumber = randomNumber();
   }
 
@@ -49,10 +51,6 @@ function newGame() {
 /* Random number */
 function randomNumber() {
 	return Math.floor((Math.random()*100)+1);
-}
-
-function resetGuess() {
-  $('#guessList').find("li").remove();
 }
 
 function validate(guessNum) {
@@ -79,6 +77,7 @@ function feedback(guessNum) {
   } else {
     $("#feedback").text("Brrrrrr!");
   }
+  $('#guessList').append('<li>' + guessNum + '</li>');
 }
 
 
