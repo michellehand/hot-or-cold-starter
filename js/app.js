@@ -23,6 +23,7 @@ $(document).ready(function(){
     event.preventDefault();
     if (guessCount > 5) {
      $('#feedback').text('You guessed more than 5 times. You lose!');
+     $(this).prop('disabled', true);
     } else {
       validate($('#userGuess').val());
       guessCount += 1;
@@ -44,6 +45,7 @@ function newGame() {
     $('#feedback').text('Make your Guess!');
     $('#userGuess').val('');
     $('#guessList').find("li").remove();
+    guessCount = 0;
     secretNumber = randomNumber();
   }
 
