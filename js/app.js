@@ -55,17 +55,17 @@ function randomNumber() {
 	return Math.floor((Math.random()*100)+1);
 }
 
-function validate(guessNum) {
-  if (isNaN(guessNum) || guessNum > 100 || guessNum < 1) {
-    alert(guessNum);
+function validate(unvalNum) {
+  if (isNaN(unvalNum) || unvalNum > 100 || unvalNum < 1) {
+    alert(unvalNum);
     $("#feedback").text("Enter a number between 1 and 100");
   } else {
-    feedback(guessNum);
+    feedback(unvalNum);
   }
 }
 
-function feedback(guessNum) {
-  var relativeNum = Math.abs(guessNum - secretNumber);
+function feedback(valNum) {
+  var relativeNum = Math.abs(valNum - secretNumber);
   if (relativeNum === 0) {
     $("#feedback").text("You Guessed Correctly! Yay!");
   } else if (relativeNum <= 5) {
@@ -79,7 +79,7 @@ function feedback(guessNum) {
   } else {
     $("#feedback").text("Brrrrrr!");
   }
-  $('#guessList').append('<li>' + guessNum + '</li>');
+  $('#guessList').append('<li>' + valNum + '</li>');
 }
 
 
