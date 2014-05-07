@@ -19,7 +19,7 @@ $(document).ready(function(){
   });
 
   /*guess button*/
-  $('#guessButton').click(function() {
+  $('#guessButton').click(function(event.preventDefault()) {
     event.preventDefault();
     if (guessCount > 5) {
      $('#feedback').text('You guessed more than 5 times. You lose!');
